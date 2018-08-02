@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab = new System.Windows.Forms.TabControl();
             this.tabRegistration = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -88,8 +89,52 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbSearchOccupation = new System.Windows.Forms.ComboBox();
             this.dataGridViewMembers = new System.Windows.Forms.DataGridView();
-            this.Header = new System.Windows.Forms.TextBox();
+            this.tabExport = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnBottom = new System.Windows.Forms.Panel();
+            this.grpGrid = new System.Windows.Forms.GroupBox();
+            this.gridThongtin = new System.Windows.Forms.DataGridView();
+            this.nGUOILXBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pnSearch = new System.Windows.Forms.Panel();
+            this.grpSearch = new System.Windows.Forms.GroupBox();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.dpEnd = new System.Windows.Forms.DateTimePicker();
+            this.dpStart = new System.Windows.Forms.DateTimePicker();
+            this.txtCmnd = new System.Windows.Forms.TextBox();
+            this.btnExportN = new System.Windows.Forms.Button();
+            this.btnSearchN = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.PrintReport = new System.Drawing.Printing.PrintDocument();
+            this.cbColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.mADKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hOVATENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nGAYSINHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sOCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOITTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOICTMADVHCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOICTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dVNHANHSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mAQUOCTICHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tENNLXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hODEMNLXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nGAYCAPCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOITTMADVHCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOITTMADVQLDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOICTMADVQLDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOICAPCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gHICHUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tRANGTHAIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nGUOITAODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nGUOISUADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nGAYTAODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nGAYSUADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gIOITINHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hOVATENINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sOCMNDCUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCheckAll = new System.Windows.Forms.Button();
+            this.btnDeselect = new System.Windows.Forms.Button();
             this.tab.SuspendLayout();
             this.tabRegistration.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -98,17 +143,27 @@
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMembers)).BeginInit();
+            this.tabExport.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnBottom.SuspendLayout();
+            this.grpGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridThongtin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nGUOILXBindingSource)).BeginInit();
+            this.pnSearch.SuspendLayout();
+            this.grpSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab
             // 
             this.tab.Controls.Add(this.tabRegistration);
             this.tab.Controls.Add(this.tabSearchManage);
+            this.tab.Controls.Add(this.tabExport);
+            this.tab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tab.Location = new System.Drawing.Point(6, 35);
+            this.tab.Location = new System.Drawing.Point(0, 0);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(1035, 494);
+            this.tab.Size = new System.Drawing.Size(1050, 537);
             this.tab.TabIndex = 0;
             this.tab.SelectedIndexChanged += new System.EventHandler(this.Tab_SelectedIndexChanged);
             // 
@@ -120,7 +175,7 @@
             this.tabRegistration.Location = new System.Drawing.Point(4, 24);
             this.tabRegistration.Name = "tabRegistration";
             this.tabRegistration.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRegistration.Size = new System.Drawing.Size(1027, 466);
+            this.tabRegistration.Size = new System.Drawing.Size(1042, 509);
             this.tabRegistration.TabIndex = 0;
             this.tabRegistration.Text = "New Registration";
             // 
@@ -394,7 +449,7 @@
             this.tabSearchManage.Location = new System.Drawing.Point(4, 24);
             this.tabSearchManage.Name = "tabSearchManage";
             this.tabSearchManage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSearchManage.Size = new System.Drawing.Size(1027, 466);
+            this.tabSearchManage.Size = new System.Drawing.Size(1042, 509);
             this.tabSearchManage.TabIndex = 1;
             this.tabSearchManage.Text = "Search / Manage Members";
             // 
@@ -731,14 +786,14 @@
             this.dataGridViewMembers.AllowUserToAddRows = false;
             this.dataGridViewMembers.AllowUserToOrderColumns = true;
             this.dataGridViewMembers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMembers.Location = new System.Drawing.Point(3, 166);
             this.dataGridViewMembers.Name = "dataGridViewMembers";
@@ -749,24 +804,397 @@
             this.dataGridViewMembers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView_CellFormatting);
             this.dataGridViewMembers.SelectionChanged += new System.EventHandler(this.dataGridViewMembers_SelectionChanged);
             // 
-            // Header
+            // tabExport
             // 
-            this.Header.BackColor = System.Drawing.SystemColors.Control;
-            this.Header.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Header.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Header.Enabled = false;
-            this.Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Header.ForeColor = System.Drawing.Color.DimGray;
-            this.Header.Location = new System.Drawing.Point(0, 0);
-            this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(1050, 31);
-            this.Header.TabIndex = 0;
-            this.Header.Text = "Social club";
-            this.Header.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tabExport.Controls.Add(this.panel1);
+            this.tabExport.Location = new System.Drawing.Point(4, 24);
+            this.tabExport.Name = "tabExport";
+            this.tabExport.Padding = new System.Windows.Forms.Padding(3);
+            this.tabExport.Size = new System.Drawing.Size(1042, 509);
+            this.tabExport.TabIndex = 2;
+            this.tabExport.Text = "Export";
+            this.tabExport.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pnBottom);
+            this.panel1.Controls.Add(this.pnSearch);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1036, 503);
+            this.panel1.TabIndex = 0;
+            // 
+            // pnBottom
+            // 
+            this.pnBottom.Controls.Add(this.grpGrid);
+            this.pnBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnBottom.Location = new System.Drawing.Point(0, 145);
+            this.pnBottom.Name = "pnBottom";
+            this.pnBottom.Size = new System.Drawing.Size(1036, 358);
+            this.pnBottom.TabIndex = 1;
+            // 
+            // grpGrid
+            // 
+            this.grpGrid.Controls.Add(this.gridThongtin);
+            this.grpGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpGrid.Location = new System.Drawing.Point(0, 0);
+            this.grpGrid.Name = "grpGrid";
+            this.grpGrid.Size = new System.Drawing.Size(1036, 358);
+            this.grpGrid.TabIndex = 0;
+            this.grpGrid.TabStop = false;
+            this.grpGrid.Text = "Thông tin chi tiết";
+            // 
+            // gridThongtin
+            // 
+            this.gridThongtin.AllowUserToAddRows = false;
+            this.gridThongtin.AllowUserToDeleteRows = false;
+            this.gridThongtin.AutoGenerateColumns = false;
+            this.gridThongtin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridThongtin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cbColumn,
+            this.mADKDataGridViewTextBoxColumn,
+            this.hOVATENDataGridViewTextBoxColumn,
+            this.nGAYSINHDataGridViewTextBoxColumn,
+            this.sOCMTDataGridViewTextBoxColumn,
+            this.nOITTDataGridViewTextBoxColumn,
+            this.nOICTMADVHCDataGridViewTextBoxColumn,
+            this.nOICTDataGridViewTextBoxColumn,
+            this.dVNHANHSDataGridViewTextBoxColumn,
+            this.mAQUOCTICHDataGridViewTextBoxColumn,
+            this.tENNLXDataGridViewTextBoxColumn,
+            this.hODEMNLXDataGridViewTextBoxColumn,
+            this.nGAYCAPCMTDataGridViewTextBoxColumn,
+            this.nOITTMADVHCDataGridViewTextBoxColumn,
+            this.nOITTMADVQLDataGridViewTextBoxColumn,
+            this.nOICTMADVQLDataGridViewTextBoxColumn,
+            this.nOICAPCMTDataGridViewTextBoxColumn,
+            this.gHICHUDataGridViewTextBoxColumn,
+            this.tRANGTHAIDataGridViewTextBoxColumn,
+            this.nGUOITAODataGridViewTextBoxColumn,
+            this.nGUOISUADataGridViewTextBoxColumn,
+            this.nGAYTAODataGridViewTextBoxColumn,
+            this.nGAYSUADataGridViewTextBoxColumn,
+            this.gIOITINHDataGridViewTextBoxColumn,
+            this.hOVATENINDataGridViewTextBoxColumn,
+            this.sOCMNDCUDataGridViewTextBoxColumn});
+            this.gridThongtin.DataSource = this.nGUOILXBindingSource;
+            this.gridThongtin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridThongtin.Location = new System.Drawing.Point(3, 17);
+            this.gridThongtin.Name = "gridThongtin";
+            this.gridThongtin.Size = new System.Drawing.Size(1030, 338);
+            this.gridThongtin.TabIndex = 0;
+            // 
+            // nGUOILXBindingSource
+            // 
+            this.nGUOILXBindingSource.DataSource = typeof(John.SocialClub.Data.DataModel.NGUOI_LX);
+            // 
+            // pnSearch
+            // 
+            this.pnSearch.Controls.Add(this.grpSearch);
+            this.pnSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnSearch.Location = new System.Drawing.Point(0, 0);
+            this.pnSearch.Name = "pnSearch";
+            this.pnSearch.Size = new System.Drawing.Size(1036, 145);
+            this.pnSearch.TabIndex = 0;
+            // 
+            // grpSearch
+            // 
+            this.grpSearch.Controls.Add(this.btnDeselect);
+            this.grpSearch.Controls.Add(this.btnCheckAll);
+            this.grpSearch.Controls.Add(this.cbStatus);
+            this.grpSearch.Controls.Add(this.dpEnd);
+            this.grpSearch.Controls.Add(this.dpStart);
+            this.grpSearch.Controls.Add(this.txtCmnd);
+            this.grpSearch.Controls.Add(this.btnExportN);
+            this.grpSearch.Controls.Add(this.btnSearchN);
+            this.grpSearch.Controls.Add(this.label8);
+            this.grpSearch.Controls.Add(this.label7);
+            this.grpSearch.Controls.Add(this.label6);
+            this.grpSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpSearch.Location = new System.Drawing.Point(0, 0);
+            this.grpSearch.Name = "grpSearch";
+            this.grpSearch.Size = new System.Drawing.Size(1036, 145);
+            this.grpSearch.TabIndex = 0;
+            this.grpSearch.TabStop = false;
+            this.grpSearch.Text = "Thông tin chi tiết";
+            // 
+            // cbStatus
+            // 
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Location = new System.Drawing.Point(180, 93);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(121, 23);
+            this.cbStatus.TabIndex = 8;
+            // 
+            // dpEnd
+            // 
+            this.dpEnd.Location = new System.Drawing.Point(361, 33);
+            this.dpEnd.Name = "dpEnd";
+            this.dpEnd.Size = new System.Drawing.Size(200, 21);
+            this.dpEnd.TabIndex = 7;
+            // 
+            // dpStart
+            // 
+            this.dpStart.Location = new System.Drawing.Point(180, 33);
+            this.dpStart.Name = "dpStart";
+            this.dpStart.Size = new System.Drawing.Size(133, 21);
+            this.dpStart.TabIndex = 6;
+            // 
+            // txtCmnd
+            // 
+            this.txtCmnd.Location = new System.Drawing.Point(707, 35);
+            this.txtCmnd.Name = "txtCmnd";
+            this.txtCmnd.Size = new System.Drawing.Size(181, 21);
+            this.txtCmnd.TabIndex = 5;
+            // 
+            // btnExportN
+            // 
+            this.btnExportN.Location = new System.Drawing.Point(917, 89);
+            this.btnExportN.Name = "btnExportN";
+            this.btnExportN.Size = new System.Drawing.Size(75, 23);
+            this.btnExportN.TabIndex = 4;
+            this.btnExportN.Text = "Xuất dữ liệu";
+            this.btnExportN.UseVisualStyleBackColor = true;
+            this.btnExportN.Click += new System.EventHandler(this.btnExportN_Click);
+            // 
+            // btnSearchN
+            // 
+            this.btnSearchN.Location = new System.Drawing.Point(917, 33);
+            this.btnSearchN.Name = "btnSearchN";
+            this.btnSearchN.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchN.TabIndex = 3;
+            this.btnSearchN.Text = "Tìm kiếm";
+            this.btnSearchN.UseVisualStyleBackColor = true;
+            this.btnSearchN.Click += new System.EventHandler(this.btnSearchN_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(618, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(62, 15);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Số CMND";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 93);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(107, 15);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Trạng thái kết xuất";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 33);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 15);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Ngày thu nhận hồ sơ";
             // 
             // PrintReport
             // 
             this.PrintReport.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocument_PrintPage);
+            // 
+            // cbColumn
+            // 
+            this.cbColumn.HeaderText = "Check";
+            this.cbColumn.Name = "cbColumn";
+            // 
+            // mADKDataGridViewTextBoxColumn
+            // 
+            this.mADKDataGridViewTextBoxColumn.DataPropertyName = "MADK";
+            this.mADKDataGridViewTextBoxColumn.HeaderText = "MADK";
+            this.mADKDataGridViewTextBoxColumn.Name = "mADKDataGridViewTextBoxColumn";
+            this.mADKDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hOVATENDataGridViewTextBoxColumn
+            // 
+            this.hOVATENDataGridViewTextBoxColumn.DataPropertyName = "HO_VA_TEN";
+            this.hOVATENDataGridViewTextBoxColumn.HeaderText = "HO_VA_TEN";
+            this.hOVATENDataGridViewTextBoxColumn.Name = "hOVATENDataGridViewTextBoxColumn";
+            this.hOVATENDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nGAYSINHDataGridViewTextBoxColumn
+            // 
+            this.nGAYSINHDataGridViewTextBoxColumn.DataPropertyName = "NGAY_SINH";
+            this.nGAYSINHDataGridViewTextBoxColumn.HeaderText = "NGAY_SINH";
+            this.nGAYSINHDataGridViewTextBoxColumn.Name = "nGAYSINHDataGridViewTextBoxColumn";
+            this.nGAYSINHDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sOCMTDataGridViewTextBoxColumn
+            // 
+            this.sOCMTDataGridViewTextBoxColumn.DataPropertyName = "SO_CMT";
+            this.sOCMTDataGridViewTextBoxColumn.HeaderText = "SO_CMT";
+            this.sOCMTDataGridViewTextBoxColumn.Name = "sOCMTDataGridViewTextBoxColumn";
+            // 
+            // nOITTDataGridViewTextBoxColumn
+            // 
+            this.nOITTDataGridViewTextBoxColumn.DataPropertyName = "NOI_TT";
+            this.nOITTDataGridViewTextBoxColumn.HeaderText = "NOI_TT";
+            this.nOITTDataGridViewTextBoxColumn.Name = "nOITTDataGridViewTextBoxColumn";
+            this.nOITTDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nOICTMADVHCDataGridViewTextBoxColumn
+            // 
+            this.nOICTMADVHCDataGridViewTextBoxColumn.DataPropertyName = "NOI_CT_MA_DVHC";
+            this.nOICTMADVHCDataGridViewTextBoxColumn.HeaderText = "NOI_CT_MA_DVHC";
+            this.nOICTMADVHCDataGridViewTextBoxColumn.Name = "nOICTMADVHCDataGridViewTextBoxColumn";
+            this.nOICTMADVHCDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nOICTDataGridViewTextBoxColumn
+            // 
+            this.nOICTDataGridViewTextBoxColumn.DataPropertyName = "NOI_CT";
+            this.nOICTDataGridViewTextBoxColumn.HeaderText = "NOI_CT";
+            this.nOICTDataGridViewTextBoxColumn.Name = "nOICTDataGridViewTextBoxColumn";
+            this.nOICTDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dVNHANHSDataGridViewTextBoxColumn
+            // 
+            this.dVNHANHSDataGridViewTextBoxColumn.DataPropertyName = "DV_NHAN_HS";
+            this.dVNHANHSDataGridViewTextBoxColumn.HeaderText = "DV_NHAN_HS";
+            this.dVNHANHSDataGridViewTextBoxColumn.Name = "dVNHANHSDataGridViewTextBoxColumn";
+            this.dVNHANHSDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // mAQUOCTICHDataGridViewTextBoxColumn
+            // 
+            this.mAQUOCTICHDataGridViewTextBoxColumn.DataPropertyName = "MA_QUOC_TICH";
+            this.mAQUOCTICHDataGridViewTextBoxColumn.HeaderText = "MA_QUOC_TICH";
+            this.mAQUOCTICHDataGridViewTextBoxColumn.Name = "mAQUOCTICHDataGridViewTextBoxColumn";
+            this.mAQUOCTICHDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // tENNLXDataGridViewTextBoxColumn
+            // 
+            this.tENNLXDataGridViewTextBoxColumn.DataPropertyName = "TEN_NLX";
+            this.tENNLXDataGridViewTextBoxColumn.HeaderText = "TEN_NLX";
+            this.tENNLXDataGridViewTextBoxColumn.Name = "tENNLXDataGridViewTextBoxColumn";
+            this.tENNLXDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // hODEMNLXDataGridViewTextBoxColumn
+            // 
+            this.hODEMNLXDataGridViewTextBoxColumn.DataPropertyName = "HO_DEM_NLX";
+            this.hODEMNLXDataGridViewTextBoxColumn.HeaderText = "HO_DEM_NLX";
+            this.hODEMNLXDataGridViewTextBoxColumn.Name = "hODEMNLXDataGridViewTextBoxColumn";
+            this.hODEMNLXDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nGAYCAPCMTDataGridViewTextBoxColumn
+            // 
+            this.nGAYCAPCMTDataGridViewTextBoxColumn.DataPropertyName = "NGAY_CAP_CMT";
+            this.nGAYCAPCMTDataGridViewTextBoxColumn.HeaderText = "NGAY_CAP_CMT";
+            this.nGAYCAPCMTDataGridViewTextBoxColumn.Name = "nGAYCAPCMTDataGridViewTextBoxColumn";
+            // 
+            // nOITTMADVHCDataGridViewTextBoxColumn
+            // 
+            this.nOITTMADVHCDataGridViewTextBoxColumn.DataPropertyName = "NOI_TT_MA_DVHC";
+            this.nOITTMADVHCDataGridViewTextBoxColumn.HeaderText = "NOI_TT_MA_DVHC";
+            this.nOITTMADVHCDataGridViewTextBoxColumn.Name = "nOITTMADVHCDataGridViewTextBoxColumn";
+            this.nOITTMADVHCDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nOITTMADVQLDataGridViewTextBoxColumn
+            // 
+            this.nOITTMADVQLDataGridViewTextBoxColumn.DataPropertyName = "NOI_TT_MA_DVQL";
+            this.nOITTMADVQLDataGridViewTextBoxColumn.HeaderText = "NOI_TT_MA_DVQL";
+            this.nOITTMADVQLDataGridViewTextBoxColumn.Name = "nOITTMADVQLDataGridViewTextBoxColumn";
+            this.nOITTMADVQLDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nOICTMADVQLDataGridViewTextBoxColumn
+            // 
+            this.nOICTMADVQLDataGridViewTextBoxColumn.DataPropertyName = "NOI_CT_MA_DVQL";
+            this.nOICTMADVQLDataGridViewTextBoxColumn.HeaderText = "NOI_CT_MA_DVQL";
+            this.nOICTMADVQLDataGridViewTextBoxColumn.Name = "nOICTMADVQLDataGridViewTextBoxColumn";
+            this.nOICTMADVQLDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nOICAPCMTDataGridViewTextBoxColumn
+            // 
+            this.nOICAPCMTDataGridViewTextBoxColumn.DataPropertyName = "NOI_CAP_CMT";
+            this.nOICAPCMTDataGridViewTextBoxColumn.HeaderText = "NOI_CAP_CMT";
+            this.nOICAPCMTDataGridViewTextBoxColumn.Name = "nOICAPCMTDataGridViewTextBoxColumn";
+            this.nOICAPCMTDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // gHICHUDataGridViewTextBoxColumn
+            // 
+            this.gHICHUDataGridViewTextBoxColumn.DataPropertyName = "GHI_CHU";
+            this.gHICHUDataGridViewTextBoxColumn.HeaderText = "GHI_CHU";
+            this.gHICHUDataGridViewTextBoxColumn.Name = "gHICHUDataGridViewTextBoxColumn";
+            this.gHICHUDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // tRANGTHAIDataGridViewTextBoxColumn
+            // 
+            this.tRANGTHAIDataGridViewTextBoxColumn.DataPropertyName = "TRANG_THAI";
+            this.tRANGTHAIDataGridViewTextBoxColumn.HeaderText = "TRANG_THAI";
+            this.tRANGTHAIDataGridViewTextBoxColumn.Name = "tRANGTHAIDataGridViewTextBoxColumn";
+            // 
+            // nGUOITAODataGridViewTextBoxColumn
+            // 
+            this.nGUOITAODataGridViewTextBoxColumn.DataPropertyName = "NGUOI_TAO";
+            this.nGUOITAODataGridViewTextBoxColumn.HeaderText = "NGUOI_TAO";
+            this.nGUOITAODataGridViewTextBoxColumn.Name = "nGUOITAODataGridViewTextBoxColumn";
+            this.nGUOITAODataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nGUOISUADataGridViewTextBoxColumn
+            // 
+            this.nGUOISUADataGridViewTextBoxColumn.DataPropertyName = "NGUOI_SUA";
+            this.nGUOISUADataGridViewTextBoxColumn.HeaderText = "NGUOI_SUA";
+            this.nGUOISUADataGridViewTextBoxColumn.Name = "nGUOISUADataGridViewTextBoxColumn";
+            this.nGUOISUADataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nGAYTAODataGridViewTextBoxColumn
+            // 
+            this.nGAYTAODataGridViewTextBoxColumn.DataPropertyName = "NGAY_TAO";
+            this.nGAYTAODataGridViewTextBoxColumn.HeaderText = "NGAY_TAO";
+            this.nGAYTAODataGridViewTextBoxColumn.Name = "nGAYTAODataGridViewTextBoxColumn";
+            this.nGAYTAODataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nGAYSUADataGridViewTextBoxColumn
+            // 
+            this.nGAYSUADataGridViewTextBoxColumn.DataPropertyName = "NGAY_SUA";
+            this.nGAYSUADataGridViewTextBoxColumn.HeaderText = "NGAY_SUA";
+            this.nGAYSUADataGridViewTextBoxColumn.Name = "nGAYSUADataGridViewTextBoxColumn";
+            this.nGAYSUADataGridViewTextBoxColumn.Visible = false;
+            // 
+            // gIOITINHDataGridViewTextBoxColumn
+            // 
+            this.gIOITINHDataGridViewTextBoxColumn.DataPropertyName = "GIOI_TINH";
+            this.gIOITINHDataGridViewTextBoxColumn.HeaderText = "GIOI_TINH";
+            this.gIOITINHDataGridViewTextBoxColumn.Name = "gIOITINHDataGridViewTextBoxColumn";
+            this.gIOITINHDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // hOVATENINDataGridViewTextBoxColumn
+            // 
+            this.hOVATENINDataGridViewTextBoxColumn.DataPropertyName = "HO_VA_TEN_IN";
+            this.hOVATENINDataGridViewTextBoxColumn.HeaderText = "HO_VA_TEN_IN";
+            this.hOVATENINDataGridViewTextBoxColumn.Name = "hOVATENINDataGridViewTextBoxColumn";
+            this.hOVATENINDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // sOCMNDCUDataGridViewTextBoxColumn
+            // 
+            this.sOCMNDCUDataGridViewTextBoxColumn.DataPropertyName = "SO_CMND_CU";
+            this.sOCMNDCUDataGridViewTextBoxColumn.HeaderText = "SO_CMND_CU";
+            this.sOCMNDCUDataGridViewTextBoxColumn.Name = "sOCMNDCUDataGridViewTextBoxColumn";
+            this.sOCMNDCUDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // btnCheckAll
+            // 
+            this.btnCheckAll.Location = new System.Drawing.Point(361, 93);
+            this.btnCheckAll.Name = "btnCheckAll";
+            this.btnCheckAll.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckAll.TabIndex = 9;
+            this.btnCheckAll.Text = "Chọn tất cả";
+            this.btnCheckAll.UseVisualStyleBackColor = true;
+            this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
+            // 
+            // btnDeselect
+            // 
+            this.btnDeselect.Location = new System.Drawing.Point(473, 92);
+            this.btnDeselect.Name = "btnDeselect";
+            this.btnDeselect.Size = new System.Drawing.Size(75, 23);
+            this.btnDeselect.TabIndex = 10;
+            this.btnDeselect.Text = "Bỏ Chọn";
+            this.btnDeselect.UseVisualStyleBackColor = true;
+            this.btnDeselect.Click += new System.EventHandler(this.btnDeselect_Click);
             // 
             // Manage
             // 
@@ -774,7 +1202,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1050, 537);
-            this.Controls.Add(this.Header);
             this.Controls.Add(this.tab);
             this.IsMdiContainer = true;
             this.Name = "Manage";
@@ -791,8 +1218,16 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMembers)).EndInit();
+            this.tabExport.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.pnBottom.ResumeLayout(false);
+            this.grpGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridThongtin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nGUOILXBindingSource)).EndInit();
+            this.pnSearch.ResumeLayout(false);
+            this.grpSearch.ResumeLayout(false);
+            this.grpSearch.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -834,7 +1269,6 @@
         private System.Windows.Forms.Label lblOccupationRequired;
         private System.Windows.Forms.Label lblDOBRequired;
         private System.Windows.Forms.Label lblNameRequired;
-        private System.Windows.Forms.TextBox Header;
         private System.Windows.Forms.ComboBox cmbOperand;
         private System.Drawing.Printing.PrintDocument PrintReport;
         private System.Windows.Forms.Button btnPrintPreview;
@@ -859,5 +1293,50 @@
         private System.Windows.Forms.Label lbl2HealthStatus;
         private System.Windows.Forms.ComboBox cmb2MaritalStatus;
         private System.Windows.Forms.Label lbl2MaritalStatus;
+        private System.Windows.Forms.TabPage tabExport;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnSearch;
+        private System.Windows.Forms.Panel pnBottom;
+        private System.Windows.Forms.GroupBox grpSearch;
+        private System.Windows.Forms.GroupBox grpGrid;
+        private System.Windows.Forms.DataGridView gridThongtin;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnSearchN;
+        private System.Windows.Forms.Button btnExportN;
+        private System.Windows.Forms.TextBox txtCmnd;
+        private System.Windows.Forms.DateTimePicker dpStart;
+        private System.Windows.Forms.DateTimePicker dpEnd;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.BindingSource nGUOILXBindingSource;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cbColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mADKDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hOVATENDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nGAYSINHDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sOCMTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOITTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOICTMADVHCDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOICTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dVNHANHSDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mAQUOCTICHDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tENNLXDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hODEMNLXDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nGAYCAPCMTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOITTMADVHCDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOITTMADVQLDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOICTMADVQLDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOICAPCMTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gHICHUDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tRANGTHAIDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nGUOITAODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nGUOISUADataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nGAYTAODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nGAYSUADataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gIOITINHDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hOVATENINDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sOCMNDCUDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnCheckAll;
+        private System.Windows.Forms.Button btnDeselect;
     }
 }

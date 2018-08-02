@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,7 +46,16 @@
     <Compile Include="BusinessService\IClubMemberService.cs" />
     <Compile Include="DataAccess\ConnectionAccess.cs" />
     <Compile Include="DataAccess\ClubMemberAccess.cs" />
+    <Compile Include="DataAccess\GIAY_TO_DA.cs" />
     <Compile Include="DataAccess\IClubMemberAccess.cs" />
+    <Compile Include="DataAccess\NGUOILX_HOSO_DA.cs" />
+    <Compile Include="DataAccess\NGUOI_LX_DA.cs" />
+    <Compile Include="DataModel\BODY.cs" />
+    <Compile Include="DataModel\GIAY_TO.cs" />
+    <Compile Include="DataModel\HEADER.cs" />
+    <Compile Include="DataModel\NGUOILX_HOSO.cs" />
+    <Compile Include="DataModel\NGUOI_LX.cs" />
+    <Compile Include="DataModel\TmpObj.cs" />
     <Compile Include="Sql\Scripts.cs" />
     <Compile Include="DataModel\ClubMemberModel.cs" />
     <Compile Include="Enums\HealthStatus.cs" />
@@ -57,6 +67,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Ultils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

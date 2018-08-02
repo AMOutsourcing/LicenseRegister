@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataGridViewPrinter.cs" />
     <Compile Include="Forms\Membership\Manage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +82,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\John.SocialClub.Data.DataModel.NGUOI_LX.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

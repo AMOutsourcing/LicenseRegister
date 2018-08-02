@@ -7,11 +7,14 @@
 namespace John.SocialClub.Desktop.Forms.Membership
 {
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Drawing;
     using System.Drawing.Printing;
     using System.Windows.Forms;
+    using John.SocialClub.Data;
     using John.SocialClub.Data.BusinessService;
+    using John.SocialClub.Data.DataAccess;
     using John.SocialClub.Data.DataModel;
     using John.SocialClub.Data.Enum;
     using John.SocialClub.Desktop.Properties;
@@ -25,7 +28,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
         /// Instance of DataGridViewPrinter
         /// </summary>
         private DataGridViewPrinter dataGridViewPrinter;
-        
+
         /// <summary>
         /// Interface of ClubMemberService
         /// </summary>
@@ -40,7 +43,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
         /// Member id
         /// </summary>
         private int memberId;
-        
+
         /// <summary>
         /// Initializes a new instance of the Manage class
         /// </summary>
@@ -50,7 +53,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
             this.InitializeResourceString();
             this.InitializeDropDownList();
             this.InitilizeDataGridViewStyle();
-            this.clubMemberService = new ClubMemberService();            
+            this.clubMemberService = new ClubMemberService();
             this.ResetRegistration();
             this.ResetSearch();
         }
@@ -87,18 +90,28 @@ namespace John.SocialClub.Desktop.Forms.Membership
         {
             cmbOccupation.DataSource = Enum.GetValues(typeof(Occupation));
             cmbMaritalStatus.DataSource = Enum.GetValues(typeof(MaritalStatus));
-            cmbHealthStatus.DataSource = Enum.GetValues(typeof(HealthStatus));            
+            cmbHealthStatus.DataSource = Enum.GetValues(typeof(HealthStatus));
 
             cmbSearchOccupation.DataSource = Enum.GetValues(typeof(Occupation));
             cmbSearchMaritalStatus.DataSource = Enum.GetValues(typeof(MaritalStatus));
             cmbOperand.SelectedIndex = 0;
+
+            //ThuyetLV
+            List<TmpObj> listTrangThai = new List<TmpObj>();
+
+            listTrangThai.Add(new TmpObj("03", "Chưa kết xuất"));
+            listTrangThai.Add(new TmpObj("04", "Đã kết xuất"));
+
+            cbStatus.DataSource = listTrangThai;
+            cbStatus.DisplayMember = "nText";
+            cbStatus.ValueMember = "nValue";
         }
 
         /// <summary>
         /// Resets search criteria
         /// </summary>
         private void ResetSearch()
-        {            
+        {
             cmbSearchMaritalStatus.SelectedIndex = -1;
             cmbSearchOccupation.SelectedIndex = -1;
             cmbOperand.SelectedIndex = 0;
@@ -145,7 +158,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
         /// </summary>
         /// <returns>true or false</returns>
         private bool ValidateRegistration()
-        {            
+        {
             this.errorMessage = string.Empty;
 
             if (txtName.Text.Trim() == string.Empty)
@@ -224,8 +237,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
             MessageBox.Show(
                 ex.Message,
                 //Resources.System_Error_Message, 
-                Resources.System_Error_Message_Title, 
-                MessageBoxButtons.OK, 
+                Resources.System_Error_Message_Title,
+                MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
         }
 
@@ -299,6 +312,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine(" IsServerConnected: " + Ultils.IsServerConnected().ToString());
+
                 // Check if the validation passes
                 if (this.ValidateRegistration())
                 {
@@ -345,9 +360,9 @@ namespace John.SocialClub.Desktop.Forms.Membership
                 {
                     // Display the validation failed message
                     MessageBox.Show(
-                        this.errorMessage, 
-                        Resources.Registration_Error_Message_Title, 
-                        MessageBoxButtons.OK, 
+                        this.errorMessage,
+                        Resources.Registration_Error_Message_Title,
+                        MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
@@ -402,7 +417,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
                 {
                     DataTable data = this.clubMemberService.GetAllClubMembers();
                     this.InitializeUpdate();
-                    this.LoadDataGridView(data);                    
+                    this.LoadDataGridView(data);
                 }
             }
             catch (Exception ex)
@@ -453,8 +468,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
             catch (Exception ex)
             {
                 this.ShowErrorMessage(ex);
-            }            
-        }     
+            }
+        }
 
         /// <summary>
         /// Click event to handle search
@@ -471,8 +486,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
             catch (Exception ex)
             {
                 this.ShowErrorMessage(ex);
-            }            
-        }       
+            }
+        }
 
         /// <summary>
         /// Click event to handle the refresh
@@ -485,12 +500,12 @@ namespace John.SocialClub.Desktop.Forms.Membership
             {
                 this.ResetSearch();
                 DataTable data = this.clubMemberService.GetAllClubMembers();
-                this.LoadDataGridView(data); 
+                this.LoadDataGridView(data);
             }
             catch (Exception ex)
             {
                 this.ShowErrorMessage(ex);
-            }            
+            }
         }
 
         /// <summary>
@@ -532,7 +547,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
             catch (Exception ex)
             {
                 this.ShowErrorMessage(ex);
-            }           
+            }
         }
 
         /// <summary>
@@ -554,8 +569,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
             catch (Exception ex)
             {
                 this.ShowErrorMessage(ex);
-            }            
-        }       
+            }
+        }
 
         /// <summary>
         /// Click event to handle the export to excel
@@ -619,12 +634,12 @@ namespace John.SocialClub.Desktop.Forms.Membership
 
                 excel.Visible = true;
                 Microsoft.Office.Interop.Excel.Worksheet worksheet = (Microsoft.Office.Interop.Excel.Worksheet)excel.ActiveSheet;
-                worksheet.Activate(); 
+                worksheet.Activate();
             }
             catch (Exception ex)
             {
                 this.ShowErrorMessage(ex);
-            }                          
+            }
         }
 
         private void dataGridViewMembers_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -638,10 +653,10 @@ namespace John.SocialClub.Desktop.Forms.Membership
             }
             catch (Exception ex)
             {
-                
+
             }
         }
-       
+
         /// <summary>
         /// Click event to update the data
         /// </summary>
@@ -676,7 +691,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
                             Resources.Update_Successful_Message,
                             Resources.Update_Successful_Message_Title,
                             MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);                        
+                            MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -711,10 +726,10 @@ namespace John.SocialClub.Desktop.Forms.Membership
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
-                
+
             }
             catch (Exception ex)
-            {                
+            {
                 this.ShowErrorMessage(ex);
             }
         }
@@ -744,9 +759,123 @@ namespace John.SocialClub.Desktop.Forms.Membership
             catch (Exception ex)
             {
                 this.ShowErrorMessage(ex);
-            }            
+            }
         }
 
-                         
+        private void btnSearchN_Click(object sender, EventArgs e)
+        {
+
+            Console.WriteLine("btnSearchN_Click dpStart: " + dpStart.Value.Date.ToString("yyyy-MM-dd"));
+            Console.WriteLine("btnSearchN_Click dpEnd: " + dpEnd.Value.Date.ToString("yyyy-MM-dd"));
+            Console.WriteLine("btnSearchN_Click cbStatus: " + cbStatus.SelectedValue);
+            List<NGUOI_LX> lstData = NGUOI_LX_DA.getData(dpStart.Value.Date, dpEnd.Value.Date, cbStatus.SelectedValue.ToString(), txtCmnd.Text);
+
+            gridThongtin.DataSource = Ultils.ConvertToDataTable(lstData);
+
+            checkAll();
+        }
+
+        private NGUOI_LX convertRowToNGUOI_LX(DataGridViewRow row)
+        {
+            NGUOI_LX rtn = new NGUOI_LX();
+            int i = 1;
+            rtn.MADK = row.Cells[i++].Value.ToString();
+            rtn.HO_VA_TEN = row.Cells[i++].Value.ToString();
+            rtn.NGAY_SINH = row.Cells[i++].Value.ToString();
+            rtn.SO_CMT = row.Cells[i++].Value.ToString();
+            rtn.NOI_TT = row.Cells[i++].Value.ToString();
+            rtn.NOI_CT_MA_DVHC = row.Cells[i++].Value.ToString();
+            rtn.NOI_CT = row.Cells[i++].Value.ToString();
+            rtn.DV_NHAN_HS = row.Cells[i++].Value.ToString();
+            rtn.MA_QUOC_TICH = row.Cells[i++].Value.ToString();
+            rtn.TEN_NLX = row.Cells[i++].Value.ToString();
+            rtn.HO_DEM_NLX = row.Cells[i++].Value.ToString();
+            //Console.WriteLine("row. cell : " + row.Cells[i++].Value.ToString());
+            rtn.NGAY_CAP_CMT = DateTime.Parse(row.Cells[i++].Value.ToString());
+            rtn.NOI_TT_MA_DVHC = row.Cells[i++].Value.ToString();
+            rtn.NOI_TT_MA_DVQL = row.Cells[i++].Value.ToString();
+            rtn.NOI_CT_MA_DVQL = row.Cells[i++].Value.ToString();
+            rtn.NOI_CAP_CMT = row.Cells[i++].Value.ToString();
+            rtn.GHI_CHU = row.Cells[i++].Value.ToString();
+            rtn.TRANG_THAI = (bool) row.Cells[i++].Value;
+            rtn.NGUOI_TAO = row.Cells[i++].Value.ToString();
+            rtn.NGUOI_SUA = row.Cells[i++].Value.ToString();
+            //Console.WriteLine("row. cell a  : " + row.Cells[i++].Value.ToString());
+            //Console.WriteLine("row. cell b : " + row.Cells[i++].Value.ToString());
+            rtn.NGAY_TAO = DateTime.Parse(row.Cells[i++].Value.ToString());
+            rtn.NGAY_SUA = DateTime.Parse(row.Cells[i++].Value.ToString());
+            rtn.GIOI_TINH = row.Cells[i++].Value.ToString();
+            rtn.HO_VA_TEN_IN = row.Cells[i++].Value.ToString();
+            rtn.SO_CMND_CU = row.Cells[i++].Value.ToString();
+            return rtn;
+        }
+
+        private void btnExportN_Click(object sender, EventArgs e)
+        {
+            List<NGUOI_LX> listExport = new List<NGUOI_LX>();
+            //Test
+            foreach (DataGridViewRow row in gridThongtin.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                chk.Value = (chk.Value == null ? false : (bool)chk.Value);
+
+                if((bool)chk.Value == true)
+                {
+                    listExport.Add(convertRowToNGUOI_LX(row));
+                }
+            }
+
+            List<NGUOILX_HOSO> lstHoso = NGUOILX_HOSO_DA.getData(listExport);
+            Console.WriteLine("NGUOILX_HOSO_DA.getData : "  + lstHoso.Count);
+
+
+            List<GIAY_TO> lstGiayTo = GIAY_TO_DA.getData(listExport);
+            Console.WriteLine("GIAY_TO_DA.getData : " + lstGiayTo.Count);
+
+            //List<GIAY_TO> lsst = new List<GIAY_TO>();
+
+            //GIAY_TO obj = new GIAY_TO();
+            //obj.TEN_NLX = "thuyet";
+
+            //GIAY_TO obj2 = new GIAY_TO();
+            //obj2.TEN_NLX = "test";
+
+            //lsst.Add(obj);
+            //lsst.Add(obj2);
+
+            ////Ultils.testExport(lsst);
+
+            //BODY body = new BODY();
+            //body.ListGiayTo = lsst;
+
+            //HEADER eADER = new HEADER();
+            //eADER.MA_GIAO_DICH = "Ma1";
+            //eADER.BODY = body;
+
+            //Ultils.testExportHead(eADER);
+        }
+
+        private void btnCheckAll_Click(object sender, EventArgs e)
+        {
+            checkAll();
+        }
+
+        private void checkAll()
+        {
+            foreach (DataGridViewRow row in gridThongtin.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                chk.Value = true;
+            }
+        }
+
+        private void btnDeselect_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in gridThongtin.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                chk.Value = false;
+            }
+        }
     }
 }
