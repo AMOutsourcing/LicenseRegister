@@ -1,8 +1,16 @@
-datasource=172.24.104.174,1433 
-database=GPLX_PACNAM
+#datasource=172.24.104.174,1433 
+#database=GPLX_PACNAM
+#username=sa
+#password=123456
+datasource=172.24.104.128,1433
+database=VPDK_NARI
 username=sa
 password=123456
-
+datasourceImport=172.24.104.128,1433
+databaseImport=VPDK
+usernameImport=sa
+passwordImport=123456
+pathImport=D:\var\jp2
 
 #172.24.104.128 
 #administrator/ansv@1234

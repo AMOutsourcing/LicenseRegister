@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "John.SocialClub.Desktop", "John.SocialClub.Desktop\John.SocialClub.Desktop.csproj", "{0450FA60-C08F-4163-B953-80426F3576A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "John.SocialClub.Data", "John.SocialClub.Data\John.SocialClub.Data.csproj", "{A0055EB5-0661-4CA3-9F07-0B9345553719}"
@@ -43,5 +45,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0DF6451A-9EB1-4F3B-A495-F3B81DFA1B6F}
 	EndGlobalSection
 EndGlobal

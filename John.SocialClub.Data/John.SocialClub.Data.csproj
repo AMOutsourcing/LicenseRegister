@@ -31,10 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSJ2K, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0ca7be2ec378a773, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSJ2K.2.0.0.1\lib\net40-client\CSJ2K.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,9 +57,12 @@
     <Compile Include="DataAccess\NGUOI_LX_DA.cs" />
     <Compile Include="DataModel\BODY.cs" />
     <Compile Include="DataModel\GIAY_TO.cs" />
+    <Compile Include="DataModel\GIAY_TO_DB.cs" />
     <Compile Include="DataModel\HEADER.cs" />
     <Compile Include="DataModel\NGUOILX_HOSO.cs" />
+    <Compile Include="DataModel\NGUOILX_HOSO_DB.cs" />
     <Compile Include="DataModel\NGUOI_LX.cs" />
+    <Compile Include="DataModel\NGUOI_LX_DB.cs" />
     <Compile Include="DataModel\TmpObj.cs" />
     <Compile Include="Sql\Scripts.cs" />
     <Compile Include="DataModel\ClubMemberModel.cs" />
@@ -68,9 +76,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Ultils.cs" />
+    <Compile Include="Ultis\BulkUploadToSql.cs" />
+    <Compile Include="Ultis\XmlWriterEE.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

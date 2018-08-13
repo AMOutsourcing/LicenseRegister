@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace John.SocialClub.Data.DataModel
 {
@@ -15,5 +16,8 @@ namespace John.SocialClub.Data.DataModel
         public String TONG_SO_BAN_GHI { get; set; }
 
         public BODY BODY { get; set; }
+
+        //[XmlElement("BODY")]
+        //public List<NGUOI_LX> ListNguoiLx { get; set; }
     }
 }

@@ -11,7 +11,8 @@
     <RootNamespace>John.SocialClub.Desktop</RootNamespace>
     <AssemblyName>John.SocialClub.Desktop</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -34,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSJ2K, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0ca7be2ec378a773, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSJ2K.2.0.0.1\lib\net40-client\CSJ2K.dll</HintPath>
+    </Reference>
     <Reference Include="DataGridViewPrinter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\DataGridViewPrinter.dll</HintPath>
@@ -57,6 +61,12 @@
     <Compile Include="Forms\Membership\Manage.Designer.cs">
       <DependentUpon>Manage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Membership\Rename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Membership\Rename.Designer.cs">
+      <DependentUpon>Rename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Membership\Manage.resx">
       <DependentUpon>Manage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Membership\Rename.resx">
+      <DependentUpon>Rename.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -82,6 +95,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\John.SocialClub.Data.DataModel.NGUOI_LX.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

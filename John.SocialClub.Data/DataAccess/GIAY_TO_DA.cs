@@ -71,10 +71,10 @@ namespace John.SocialClub.Data.DataAccess
                 {
                     obj = new GIAY_TO();
                     if (!reader.IsDBNull(reader.GetOrdinal("MaDK"))) { obj.MADK = reader.GetString(reader.GetOrdinal("MaDK")); } else { obj.MADK = ""; }
-                    if (!reader.IsDBNull(reader.GetOrdinal("MaGT"))) { obj.MAGT = reader.GetInt32(reader.GetOrdinal("MaGT")); } else { obj.MAGT = -1; }
+                    if (!reader.IsDBNull(reader.GetOrdinal("MaGT"))) { obj.MAGT = reader.GetInt32(reader.GetOrdinal("MaGT")).ToString(); } else { obj.MAGT = null; }
                     if (!reader.IsDBNull(reader.GetOrdinal("SoHoSo"))) { obj.SOHOSO = reader.GetString(reader.GetOrdinal("SoHoSo")); } else { obj.SOHOSO = ""; }
                     if (!reader.IsDBNull(reader.GetOrdinal("TenGT"))) { obj.TEN_NLX = reader.GetString(reader.GetOrdinal("TenGT")); } else { obj.TEN_NLX = ""; }
-                    if (!reader.IsDBNull(reader.GetOrdinal("TrangThai"))) { obj.TRANGTHAI = reader.GetBoolean(reader.GetOrdinal("TrangThai")); } else { obj.TRANGTHAI = false; }
+                    if (!reader.IsDBNull(reader.GetOrdinal("TrangThai"))) { obj.TRANGTHAI = reader.GetBoolean(reader.GetOrdinal("TrangThai")).ToString(); } else { obj.TRANGTHAI = null; }
                     rtn.Add(obj);
                 }
             }
@@ -82,6 +82,134 @@ namespace John.SocialClub.Data.DataAccess
             {
                 // Always call Close when done reading.
                 reader.Close();
+            }
+            return rtn;
+        }
+
+        public static int insertData(SqlConnection connection, SqlTransaction transaction, GIAY_TO obj)
+        {
+            int rtn = 0;
+
+            try
+            {
+                string queryString = "INSERT INTO [dbo].[NguoiLXHS_GiayTo] (MaDK, MaGT, SoHoSo, TenGT, TrangThai) " +
+                    "VALUES (@MADK, @MAGT, @SOHOSO, @TEN_NLX, @TRANGTHAI)";
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                // Must assign both transaction object and connection
+                // to Command object for a pending local transaction
+                command.Connection = connection;
+                command.Transaction = transaction;
+
+                command.Parameters.AddWithValue("@MaDK", obj.MADK);
+                if (obj.MAGT != null)
+                {
+                    command.Parameters.AddWithValue("@MaGT", Int32.Parse(obj.MAGT));
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@MaGT", DBNull.Value);
+                }
+
+                if (obj.SOHOSO == null || obj.SOHOSO.Length <= 0)
+                {
+                    command.Parameters.AddWithValue("@SoHoSo", DBNull.Value);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@SoHoSo", obj.SOHOSO);
+
+                }
+                if (obj.TEN_NLX == null || obj.TEN_NLX.Length <= 0)
+                {
+                    command.Parameters.AddWithValue("@TEN_NLX", DBNull.Value);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@TEN_NLX", obj.TEN_NLX);
+
+                }
+                if (obj.TRANGTHAI == null)
+                {
+                    command.Parameters.AddWithValue("@TrangThai", DBNull.Value);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@TrangThai", obj.TRANGTHAI);
+
+                }
+                rtn = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                rtn = -1;
+                throw ex;
+            }
+            finally
+            {
+            }
+            return rtn;
+        }
+
+
+        public static int insertData(GIAY_TO obj)
+        {
+            int rtn = 0;
+
+            SqlConnection connection = Ultils.GetDBConnection();
+            try
+            {
+                string queryString = "INSERT INTO [dbo].[NguoiLXHS_GiayTo] (MaDK, MaGT, SoHoSo, TenGT, TrangThai) " +
+                    "VALUES (@MADK, @MAGT, @SOHOSO, @TEN_NLX, @TRANGTHAI)";
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@MaDK", obj.MADK);
+                if (obj.MAGT != null)
+                {
+                    command.Parameters.AddWithValue("@MaGT", Int32.Parse(obj.MAGT));
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@MaGT", DBNull.Value);
+                }
+
+                if (obj.SOHOSO == null || obj.SOHOSO.Length <= 0)
+                {
+                    command.Parameters.AddWithValue("@SoHoSo", DBNull.Value);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@SoHoSo", obj.SOHOSO);
+
+                }
+                if (obj.TEN_NLX == null || obj.TEN_NLX.Length <= 0)
+                {
+                    command.Parameters.AddWithValue("@TEN_NLX", DBNull.Value);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@TEN_NLX", obj.TEN_NLX);
+
+                }
+                if (obj.TRANGTHAI == null)
+                {
+                    command.Parameters.AddWithValue("@TrangThai", DBNull.Value);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@TrangThai", obj.TRANGTHAI);
+
+                }
+                rtn = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                rtn = -1;
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
             }
             return rtn;
         }
