@@ -8,8 +8,8 @@
     <ProjectGuid>{0450FA60-C08F-4163-B953-80426F3576A0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>John.SocialClub.Desktop</RootNamespace>
-    <AssemblyName>John.SocialClub.Desktop</AssemblyName>
+    <RootNamespace>GPLX.App.Desktop</RootNamespace>
+    <AssemblyName>DongBoCSDL-VPDK</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -33,6 +33,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSJ2K, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0ca7be2ec378a773, processorArchitecture=MSIL">
@@ -110,9 +113,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\John.SocialClub.Data\John.SocialClub.Data.csproj">
+    <ProjectReference Include="..\John.SocialClub.Data\GPLX.Data.csproj">
       <Project>{A0055EB5-0661-4CA3-9F07-0B9345553719}</Project>
-      <Name>John.SocialClub.Data</Name>
+      <Name>GPLX.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +146,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

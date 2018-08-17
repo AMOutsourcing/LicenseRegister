@@ -1,4 +1,4 @@
-﻿namespace John.SocialClub.Desktop
+﻿namespace GPLX.App.Desktop
 {
     partial class Login
     {

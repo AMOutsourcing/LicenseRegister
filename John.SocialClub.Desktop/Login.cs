@@ -4,12 +4,12 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Desktop
+namespace GPLX.App.Desktop
 {
     using System;
     using System.Windows.Forms;
-    using John.SocialClub.Desktop.Forms.Membership;
-    using John.SocialClub.Desktop.Properties;
+    using GPLX.App.Desktop.Forms.Membership;
+    using GPLX.App.Desktop.Properties;
 
     /// <summary>
     /// Login form

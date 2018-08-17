@@ -1,4 +1,4 @@
-﻿namespace John.SocialClub.Desktop.Forms.Membership
+﻿namespace GPLX.App.Desktop.Forms.Membership
 {
     partial class Rename
     {

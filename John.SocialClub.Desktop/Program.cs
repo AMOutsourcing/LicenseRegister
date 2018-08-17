@@ -1,10 +1,10 @@
-﻿using John.SocialClub.Desktop.Forms.Membership;
+﻿using GPLX.App.Desktop.Forms.Membership;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace John.SocialClub.Desktop
+namespace GPLX.App.Desktop
 {
     static class Program
     {

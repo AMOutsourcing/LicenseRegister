@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace John.SocialClub.Desktop.Forms.Membership
+namespace GPLX.App.Desktop.Forms.Membership
 {
     public partial class Rename : Form
     {

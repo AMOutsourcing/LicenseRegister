@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Desktop.Forms.Membership
+namespace GPLX.App.Desktop.Forms.Membership
 {
     using System;
     using System.Collections.Generic;
@@ -14,12 +14,12 @@ namespace John.SocialClub.Desktop.Forms.Membership
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
-    using John.SocialClub.Data;
-    using John.SocialClub.Data.BusinessService;
-    using John.SocialClub.Data.DataAccess;
-    using John.SocialClub.Data.DataModel;
-    using John.SocialClub.Data.Enum;
-    using John.SocialClub.Desktop.Properties;
+    using GPLX.Data;
+    using GPLX.Data.BusinessService;
+    using GPLX.Data.DataAccess;
+    using GPLX.Data.DataModel;
+    using GPLX.Data.Enum;
+    using GPLX.App.Desktop.Properties;
 
     /// <summary>
     /// Manage screen - To view, search, print, export club members information
@@ -787,10 +787,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
             Console.WriteLine("btnSearchN_Click dpEnd: " + dpEnd.Value.Date.ToString("yyyy-MM-dd"));
             Console.WriteLine("btnSearchN_Click cbStatus: " + cbStatus.SelectedValue);
             List<NGUOI_LX> lstData = NGUOI_LX_DA.getData(dpStart.Value.Date, dpEnd.Value.Date, cbStatus.SelectedValue.ToString(), txtCmnd.Text, LIST_MA_DV);
+            
 
-            
-            String text = msgSumExport;
-            
             if (lstData != null && lstData.Count > 0)
             {
                 btnCheckAll.Enabled = true;
@@ -804,7 +802,9 @@ namespace John.SocialClub.Desktop.Forms.Membership
                 {
                     btnChangeStatus.Visible = false;
                 }
-                text = msgSumExport.Replace("%num%", lstData.Count.ToString());
+
+                countCheck = lstData.Count;
+                countRecord = lstData.Count;
             }
             else
             {
@@ -812,15 +812,24 @@ namespace John.SocialClub.Desktop.Forms.Membership
                 btnDeselect.Enabled = false;
                 btnExportN.Enabled = false;
                 btnChangeStatus.Visible = false;
-                text = msgSumExport.Replace("%num%", "0");
+                countCheck = 0;
+                countRecord = 0;
             }
 
-            lbSumSearch.Show();
-            lbSumSearch.Text = text;
+            updateSumExport();
 
             gridThongtin.DataSource = Ultils.ConvertToDataTable(lstData);
 
             checkAll();
+        }
+
+        private void updateSumExport()
+        {
+            String text = msgSumExport;
+            text = text.Replace("%num%", countRecord.ToString());
+            text = text.Replace("%select%", countCheck.ToString());
+            lbSumSearch.Show();
+            lbSumSearch.Text = text;
         }
 
         private NGUOI_LX convertRowToNGUOI_LX(DataGridViewRow row)
@@ -980,6 +989,10 @@ namespace John.SocialClub.Desktop.Forms.Membership
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
                 chk.Value = true;
             }
+
+            //
+            countCheck = countRecord;
+            updateSumExport();
         }
 
         private void btnDeselect_Click(object sender, EventArgs e)
@@ -989,6 +1002,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
                 chk.Value = false;
             }
+            countCheck = 0;
+            updateSumExport();
         }
 
         private void txtPath_Click(object sender, EventArgs e)
@@ -1112,7 +1127,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
             }
         }
 
-        private string importTuanTu(List<NGUOI_LX> ListNguoiLx, List<NGUOILX_HOSO> ListNguoiLxHs, List<GIAY_TO> ListGiayTo,ref int importSuccess)
+        private string importTuanTu(List<NGUOI_LX> ListNguoiLx, List<NGUOILX_HOSO> ListNguoiLxHs, List<GIAY_TO> ListGiayTo, ref int importSuccess)
         {
             List<NGUOILX_HOSO> ListNguoiLxHsTmp = null;
             List<GIAY_TO> ListGiayToTmp = null;
@@ -1137,7 +1152,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
                         DialogResult d = MessageBox.Show("Mã ĐK " + nguoilx.MADK + " đã tồn tại. Bạn muốn thay đổi mã ĐK?", "Thay đổi Mã ĐK", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                         if (d == DialogResult.Yes || d == DialogResult.OK)
                         {
-                            catchImportNguoiLxe(nguoilx, ListNguoiLxHsTmp, ListGiayToTmp,ref importSuccess);
+                            catchImportNguoiLxe(nguoilx, ListNguoiLxHsTmp, ListGiayToTmp, ref importSuccess);
                         }
                         else if (d == DialogResult.No || d == DialogResult.None)
                         {
@@ -1212,7 +1227,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
                         {
                             catchImportNguoiLxe(NguoiLx, ListNguoiLxHs, ListGiayTo, ref importSuccess);
                         }
-                    }else
+                    }
+                    else
                         importSuccess++;
                 }
             }
@@ -1254,7 +1270,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
         private void button1_Click(object sender, EventArgs e)
         {
             //String enc = Ultils.tesst(@"F:\Project\CSharp\LicenseRegister\img\relax.jp2");
-            //String enc = Ultils.tesst(@"F:\Project\CSharp\LicenseRegister\John.SocialClub.Desktop\bin\Debug\tesstfile.jp2");
+            //String enc = Ultils.tesst(@"F:\Project\CSharp\LicenseRegister\GPLX.App.Desktop\bin\Debug\tesstfile.jp2");
             string tessencode = Ultils.encodeJp2(@"D:\var\lib\decodeJp2.jp2");
             Console.WriteLine("--------------enc: " + encode.Length);
             Console.WriteLine("--------------tessencode: " + tessencode.Length);
@@ -1360,8 +1376,25 @@ namespace John.SocialClub.Desktop.Forms.Membership
                 tab.TabPages.Remove(tabExport);
         }
 
-        public static String LIST_MA_DV = "";
+        public static String LIST_MA_DV = "'061', '062', '063', '064', '065', '066', '067', '068', '069', '0610', '041', '042', '043', '044', '045', '046', '047', '048', '049', '0410'";
         private static bool TYPE_EXPORT = true;
-        private String msgSumExport = "Đã tìm thấy %num% bản ghi";
+        private String msgSumExport = "Đã chọn %select% trong số %num% hồ sơ";
+
+        private int countCheck = 0;
+        private int countRecord = 0;
+        private void gridThongtin_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == cbColumn.Index && e.RowIndex != -1)
+            {
+                gridThongtin.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                // Handle checkbox state change here
+                Boolean Value = Convert.ToBoolean(gridThongtin.Rows[e.RowIndex].Cells[e.ColumnIndex].EditedFormattedValue);
+                if (Value)
+                    countCheck++;
+                else
+                    countCheck--;
+                updateSumExport();
+            }
+        }
     }
 }

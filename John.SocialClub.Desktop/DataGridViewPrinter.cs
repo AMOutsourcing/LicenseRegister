@@ -7,7 +7,7 @@ using System.Drawing.Printing;
 using System.Data;
 using System.Windows.Forms;
 
-namespace John.SocialClub.Desktop
+namespace GPLX.App.Desktop
 {
     class DataGridViewPrinter
     {
