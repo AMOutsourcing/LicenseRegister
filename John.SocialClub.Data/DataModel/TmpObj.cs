@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace John.SocialClub.Data.DataModel
+namespace GPLX.Data.DataModel
 {
     public class TmpObj
     {

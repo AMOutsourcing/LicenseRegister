@@ -4,10 +4,10 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Data.DataAccess
+namespace GPLX.Data.DataAccess
 {
     using System.Data;
-    using John.SocialClub.Data.DataModel;
+    using GPLX.Data.DataModel;
 
     /// <summary>
     /// Interface IClubMemberAccess

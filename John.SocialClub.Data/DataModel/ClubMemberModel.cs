@@ -4,10 +4,10 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Data.DataModel
+namespace GPLX.Data.DataModel
 {
     using System;
-    using John.SocialClub.Data.Enum;
+    using GPLX.Data.Enum;
 
     /// <summary>
     /// Member model

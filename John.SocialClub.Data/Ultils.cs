@@ -9,9 +9,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using John.SocialClub.Data.DataAccess;
-using John.SocialClub.Data.DataModel;
-using John.SocialClub.Data.Ultis;
+using GPLX.Data.DataAccess;
+using GPLX.Data.DataModel;
+using GPLX.Data.Ultis;
 using CSJ2K;
 using System.Drawing;
 using CSJ2K.Util;
@@ -19,7 +19,7 @@ using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace John.SocialClub.Data
+namespace GPLX.Data
 {
     public static class Ultils
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using John.SocialClub.Data.DataModel;
+using GPLX.Data.DataModel;
 
-namespace John.SocialClub.Data.DataAccess
+namespace GPLX.Data.DataAccess
 {
     public class GIAY_TO_DA
     {

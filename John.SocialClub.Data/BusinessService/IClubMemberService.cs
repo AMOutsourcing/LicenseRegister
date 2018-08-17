@@ -4,10 +4,10 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Data.BusinessService
+namespace GPLX.Data.BusinessService
 {
     using System.Data;
-    using John.SocialClub.Data.DataModel;
+    using GPLX.Data.DataModel;
 
     /// <summary>
     /// Interface IClubMemberService

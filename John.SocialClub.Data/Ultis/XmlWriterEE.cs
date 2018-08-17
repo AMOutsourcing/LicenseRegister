@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace John.SocialClub.Data.Ultis
+namespace GPLX.Data.Ultis
 {
     public class XmlWriterEE : XmlWriter
     {

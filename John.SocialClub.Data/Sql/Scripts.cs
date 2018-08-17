@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Data.Sql
+namespace GPLX.Data.Sql
 {
     /// <summary>
     /// DBConstants static class contains sql string constants

@@ -7,7 +7,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace John.SocialClub.Data.DataModel
+namespace GPLX.Data.DataModel
 {
     public class NGUOI_LX
     {

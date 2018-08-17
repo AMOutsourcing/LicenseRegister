@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Data.Enum
+namespace GPLX.Data.Enum
 {
     using System.ComponentModel;
 

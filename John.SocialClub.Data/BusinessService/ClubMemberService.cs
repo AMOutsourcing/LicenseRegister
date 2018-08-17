@@ -4,11 +4,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Data.BusinessService
+namespace GPLX.Data.BusinessService
 {
     using System.Data;
-    using John.SocialClub.Data.DataAccess;
-    using John.SocialClub.Data.DataModel;
+    using GPLX.Data.DataAccess;
+    using GPLX.Data.DataModel;
 
     /// <summary>
     /// class to query the DataAccess, implements IClubMemberService interface

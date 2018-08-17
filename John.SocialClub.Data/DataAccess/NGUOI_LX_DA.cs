@@ -4,17 +4,15 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using John.SocialClub.Data.DataModel;
+using GPLX.Data.DataModel;
 
-namespace John.SocialClub.Data.DataAccess
+namespace GPLX.Data.DataAccess
 {
     public class NGUOI_LX_DA
     {
         public static List<NGUOI_LX> getData(DateTime start, DateTime end, String trangthai, string cmnd, String lstMaDv)
         {
             List<NGUOI_LX> rtn = new List<NGUOI_LX>();
-            if (lstMaDv == null || lstMaDv.Trim().Length <= 0)
-                return rtn;
 
             string queryString = "";
             if (trangthai != null && trangthai.Trim().Length > 0)
@@ -28,6 +26,7 @@ namespace John.SocialClub.Data.DataAccess
 
             if (start != null)
             {
+                queryString += " AND n.NgayTao>=@StartDate ";
                 queryString += " AND n.NgayTao>=@StartDate ";
             }
             if (end != null)
@@ -45,8 +44,8 @@ namespace John.SocialClub.Data.DataAccess
                 queryString += " AND n.SoCMT like @cmnd ";
             }
 
-
-            queryString += " AND n.DV_NHAN_HS IN (" + lstMaDv + ") ";
+            if (lstMaDv != null && lstMaDv.Trim().Length > 0)
+                queryString += " AND n.DonViNhanHSo IN (" + lstMaDv + ") ";
 
             SqlConnection connection = Ultils.GetDBConnection();
             SqlCommand command = new SqlCommand(queryString, connection);

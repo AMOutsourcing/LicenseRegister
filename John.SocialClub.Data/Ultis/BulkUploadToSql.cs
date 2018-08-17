@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace John.SocialClub.Data.Ultis
+namespace GPLX.Data.Ultis
 {
     public class BulkUploadToSql<T>
     {

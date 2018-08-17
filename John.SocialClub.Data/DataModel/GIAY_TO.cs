@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace John.SocialClub.Data.DataModel
+namespace GPLX.Data.DataModel
 {
     public class GIAY_TO
     {

@@ -4,13 +4,13 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Data.DataAccess
+namespace GPLX.Data.DataAccess
 {
     using System;
     using System.Data;
     using System.Data.OleDb;
-    using John.SocialClub.Data.DataModel;
-    using John.SocialClub.Data.Sql;
+    using GPLX.Data.DataModel;
+    using GPLX.Data.Sql;
 
     /// <summary>
     /// Data access class for ClubMember table

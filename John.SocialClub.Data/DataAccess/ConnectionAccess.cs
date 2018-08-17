@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace John.SocialClub.Data.DataAccess
+namespace GPLX.Data.DataAccess
 {
     using System.Configuration;
 
