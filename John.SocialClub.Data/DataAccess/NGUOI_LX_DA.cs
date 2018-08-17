@@ -10,9 +10,11 @@ namespace John.SocialClub.Data.DataAccess
 {
     public class NGUOI_LX_DA
     {
-        public static List<NGUOI_LX> getData(DateTime start, DateTime end, String trangthai, string cmnd)
+        public static List<NGUOI_LX> getData(DateTime start, DateTime end, String trangthai, string cmnd, String lstMaDv)
         {
             List<NGUOI_LX> rtn = new List<NGUOI_LX>();
+            if (lstMaDv == null || lstMaDv.Trim().Length <= 0)
+                return rtn;
 
             string queryString = "";
             if (trangthai != null && trangthai.Trim().Length > 0)
@@ -42,6 +44,10 @@ namespace John.SocialClub.Data.DataAccess
             {
                 queryString += " AND n.SoCMT like @cmnd ";
             }
+
+
+            queryString += " AND n.DV_NHAN_HS IN (" + lstMaDv + ") ";
+
             SqlConnection connection = Ultils.GetDBConnection();
             SqlCommand command = new SqlCommand(queryString, connection);
             if (start != null)
@@ -79,7 +85,7 @@ namespace John.SocialClub.Data.DataAccess
                     if (!reader.IsDBNull(reader.GetOrdinal("TenNLX"))) { obj.TEN_NLX = reader.GetString(reader.GetOrdinal("TenNLX")); } else { obj.TEN_NLX = ""; }
                     if (!reader.IsDBNull(reader.GetOrdinal("HoVaTen"))) { obj.HO_VA_TEN = reader.GetString(reader.GetOrdinal("HoVaTen")); } else { obj.HO_VA_TEN = ""; }
                     if (!reader.IsDBNull(reader.GetOrdinal("MaQuocTich"))) { obj.MA_QUOC_TICH = reader.GetString(reader.GetOrdinal("MaQuocTich")); } else { obj.MA_QUOC_TICH = ""; }
-                    if (!reader.IsDBNull(reader.GetOrdinal("NgaySinh"))) { obj.NGAY_SINH = DateTime.ParseExact(reader.GetString(reader.GetOrdinal("NgaySinh")),"yyyyMMdd", CultureInfo.InvariantCulture).ToString(Ultils.FORMAT_DATE); } else { obj.NGAY_SINH = ""; }
+                    if (!reader.IsDBNull(reader.GetOrdinal("NgaySinh"))) { obj.NGAY_SINH = DateTime.ParseExact(reader.GetString(reader.GetOrdinal("NgaySinh")), "yyyyMMdd", CultureInfo.InvariantCulture).ToString(Ultils.FORMAT_DATE); } else { obj.NGAY_SINH = ""; }
                     if (!reader.IsDBNull(reader.GetOrdinal("NoiTT"))) { obj.NOI_TT = reader.GetString(reader.GetOrdinal("NoiTT")); } else { obj.NOI_TT = ""; }
                     if (!reader.IsDBNull(reader.GetOrdinal("NoiTT_MaDVHC"))) { obj.NOI_TT_MA_DVHC = reader.GetString(reader.GetOrdinal("NoiTT_MaDVHC")); } else { obj.NOI_TT_MA_DVHC = ""; }
                     if (!reader.IsDBNull(reader.GetOrdinal("NoiTT_MaDVQL"))) { obj.NOI_TT_MA_DVQL = reader.GetString(reader.GetOrdinal("NoiTT_MaDVQL")); } else { obj.NOI_TT_MA_DVQL = ""; }

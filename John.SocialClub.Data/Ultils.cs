@@ -331,7 +331,7 @@ namespace John.SocialClub.Data
             };
             objBulk.Commit();
         }
-
+        
         public static String importHosoJp2(List<NGUOILX_HOSO> ListNguoiLxHs)
         {
             string filepath = getConfigInDB("IMG_PATH_VPDK_SOGTVT");
@@ -347,7 +347,7 @@ namespace John.SocialClub.Data
                         {
                             pathAnh = filepath + "\\" + DateTime.Parse(obj.NGAYTHUNHANANH).ToString(Ultils.FORMAT_DATE_FOLDER);
                             //Tao thu muc
-                            System.IO.Directory.CreateDirectory(filepath);
+                            System.IO.Directory.CreateDirectory(pathAnh);
 
                             obj.DUONGDANANH = decodeJp2(pathAnh, obj.MADK + ".jp2", obj.DUONGDANANH);
                         }
@@ -370,6 +370,41 @@ namespace John.SocialClub.Data
             }
             return "";
         }
+
+        public static void renameAnhHosoJp2(List<NGUOILX_HOSO> ListNguoiLxHs)
+        {
+            string filepath = getConfigInDB("IMG_PATH_VPDK_SOGTVT");
+            
+            foreach (NGUOILX_HOSO obj in ListNguoiLxHs)
+            {
+                try
+                {
+                    if (obj.DUONGDANANH != null && obj.DUONGDANANH.Trim().Length > 0)
+                    {
+                        // get the file attributes for file or directory
+                        FileAttributes attr = File.GetAttributes(obj.DUONGDANANH);
+                        
+                        //detect whether its a directory or file
+                        if ((attr & FileAttributes.Directory) != FileAttributes.Directory)
+                        {
+                            string oldFile = Path.GetFileName(obj.DUONGDANANH);
+                            string newFile = obj.DUONGDANANH.Replace(oldFile, obj.MADK + ".jp2");
+
+                            System.IO.File.Copy(obj.DUONGDANANH, newFile, false);
+                            obj.DUONGDANANH = newFile;
+                        }
+                        
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+        }
+
         public static String importDbWithCommit(List<NGUOI_LX> ListNguoiLx, List<NGUOILX_HOSO> ListNguoiLxHs, List<GIAY_TO> ListGiayTo)
         {
             SqlConnection connection = Ultils.GetDBConnectionImport();

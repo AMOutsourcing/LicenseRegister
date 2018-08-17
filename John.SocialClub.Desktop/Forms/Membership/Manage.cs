@@ -786,8 +786,11 @@ namespace John.SocialClub.Desktop.Forms.Membership
             Console.WriteLine("btnSearchN_Click dpStart: " + dpStart.Value.Date.ToString("yyyy-MM-dd"));
             Console.WriteLine("btnSearchN_Click dpEnd: " + dpEnd.Value.Date.ToString("yyyy-MM-dd"));
             Console.WriteLine("btnSearchN_Click cbStatus: " + cbStatus.SelectedValue);
-            List<NGUOI_LX> lstData = NGUOI_LX_DA.getData(dpStart.Value.Date, dpEnd.Value.Date, cbStatus.SelectedValue.ToString(), txtCmnd.Text);
+            List<NGUOI_LX> lstData = NGUOI_LX_DA.getData(dpStart.Value.Date, dpEnd.Value.Date, cbStatus.SelectedValue.ToString(), txtCmnd.Text, LIST_MA_DV);
 
+            
+            String text = msgSumExport;
+            
             if (lstData != null && lstData.Count > 0)
             {
                 btnCheckAll.Enabled = true;
@@ -801,6 +804,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
                 {
                     btnChangeStatus.Visible = false;
                 }
+                text = msgSumExport.Replace("%num%", lstData.Count.ToString());
             }
             else
             {
@@ -808,7 +812,11 @@ namespace John.SocialClub.Desktop.Forms.Membership
                 btnDeselect.Enabled = false;
                 btnExportN.Enabled = false;
                 btnChangeStatus.Visible = false;
+                text = msgSumExport.Replace("%num%", "0");
             }
+
+            lbSumSearch.Show();
+            lbSumSearch.Text = text;
 
             gridThongtin.DataSource = Ultils.ConvertToDataTable(lstData);
 
@@ -1000,10 +1008,17 @@ namespace John.SocialClub.Desktop.Forms.Membership
 
                 //View Grid
                 List<NGUOI_LX> lstData = bODY.ListNguoiLx;
+                int i = 1;
+                foreach (NGUOI_LX obj in lstData)
+                {
+                    obj.STT = i++;
+                }
                 gridData.DataSource = Ultils.ConvertToDataTable(lstData);
 
                 //
                 btnImport.Enabled = true;
+
+                txtImportSuccess.Text = "0/" + lstData.Count;
             }
             else
             {
@@ -1012,6 +1027,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
             }
         }
 
+
+        int importSuccess = 0;
         private void btnImport_Click(object sender, EventArgs e)
         {
             //Tao thu muc import
@@ -1065,7 +1082,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
                     }
                 }
             }
-            
+
 
 
             ////DEcode anh jp2
@@ -1073,26 +1090,29 @@ namespace John.SocialClub.Desktop.Forms.Membership
 
             if (message == "")
             {
-
-                message = importTuanTu(bODY.ListNguoiLx, bODY.ListNguoiLxHs, bODY.ListGiayTo);
+                importSuccess = 0;
+                message = importTuanTu(bODY.ListNguoiLx, bODY.ListNguoiLxHs, bODY.ListGiayTo, ref importSuccess);
 
                 //Import nhanh
                 //message = Ultils.importDbWithCommit(bODY.ListNguoiLx, bODY.ListNguoiLxHs, bODY.ListGiayTo);
                 if (message == "")
                 {
                     MessageBox.Show("Import thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }else if (message == "cancel")
+                    txtImportSuccess.Text = importSuccess.ToString() + "/" + bODY.ListNguoiLx.Count;
+                }
+                else if (message == "cancel")
                 {
-
+                    txtImportSuccess.Text = importSuccess.ToString() + "/" + bODY.ListNguoiLx.Count;
                 }
                 else
                 {
                     MessageBox.Show("Import không thành công: " + message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtImportSuccess.Text = "0" + "/" + bODY.ListNguoiLx.Count;
                 }
             }
         }
 
-        private string importTuanTu(List<NGUOI_LX> ListNguoiLx, List<NGUOILX_HOSO> ListNguoiLxHs, List<GIAY_TO> ListGiayTo)
+        private string importTuanTu(List<NGUOI_LX> ListNguoiLx, List<NGUOILX_HOSO> ListNguoiLxHs, List<GIAY_TO> ListGiayTo,ref int importSuccess)
         {
             List<NGUOILX_HOSO> ListNguoiLxHsTmp = null;
             List<GIAY_TO> ListGiayToTmp = null;
@@ -1117,7 +1137,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
                         DialogResult d = MessageBox.Show("Mã ĐK " + nguoilx.MADK + " đã tồn tại. Bạn muốn thay đổi mã ĐK?", "Thay đổi Mã ĐK", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                         if (d == DialogResult.Yes || d == DialogResult.OK)
                         {
-                            catchImportNguoiLxe(nguoilx, ListNguoiLxHsTmp, ListGiayToTmp);
+                            catchImportNguoiLxe(nguoilx, ListNguoiLxHsTmp, ListGiayToTmp,ref importSuccess);
                         }
                         else if (d == DialogResult.No || d == DialogResult.None)
                         {
@@ -1128,6 +1148,8 @@ namespace John.SocialClub.Desktop.Forms.Membership
                             return "cancel";
                         }
                     }
+                    else
+                        importSuccess++;
                     Console.WriteLine("------NGUOI_LX: " + nguoilx.MADK + " - -ListNguoiLxHs: " + ListNguoiLxHs.Count + " - ListGiayTo: " + ListGiayTo.Count);
                 }
                 catch (Exception ex)
@@ -1158,7 +1180,7 @@ namespace John.SocialClub.Desktop.Forms.Membership
             return "";
         }
 
-        private void catchImportNguoiLxe(NGUOI_LX NguoiLx, List<NGUOILX_HOSO> ListNguoiLxHs, List<GIAY_TO> ListGiayTo)
+        private void catchImportNguoiLxe(NGUOI_LX NguoiLx, List<NGUOILX_HOSO> ListNguoiLxHs, List<GIAY_TO> ListGiayTo, ref int importSuccess)
         {
             try
             {
@@ -1178,6 +1200,9 @@ namespace John.SocialClub.Desktop.Forms.Membership
                         obj.MADK = newMaDK;
                     }
 
+                    //Rename anh cu
+                    Ultils.renameAnhHosoJp2(ListNguoiLxHs);
+
                     //Import lai
                     string mesage = Ultils.importNguoiLxeWithCommit(NguoiLx, ListNguoiLxHs, ListGiayTo);
                     if (mesage != null && mesage.Length > 0 && mesage.Contains("constraint 'PK_NguoiLX'"))
@@ -1185,9 +1210,10 @@ namespace John.SocialClub.Desktop.Forms.Membership
                         DialogResult d = MessageBox.Show("importNguoiLxeWithCommit: " + mesage, "Lỗi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (d == DialogResult.Yes || d == DialogResult.OK)
                         {
-                            catchImportNguoiLxe(NguoiLx, ListNguoiLxHs, ListGiayTo);
+                            catchImportNguoiLxe(NguoiLx, ListNguoiLxHs, ListGiayTo, ref importSuccess);
                         }
-                    }
+                    }else
+                        importSuccess++;
                 }
             }
             catch (Exception ex)
@@ -1326,6 +1352,16 @@ namespace John.SocialClub.Desktop.Forms.Membership
 
             dpEnd.Format = DateTimePickerFormat.Custom;
             dpEnd.CustomFormat = "dd/MM/yyyy";
+
+            //
+            if (TYPE_EXPORT)
+                tab.TabPages.Remove(tabImport);
+            else
+                tab.TabPages.Remove(tabExport);
         }
+
+        public static String LIST_MA_DV = "";
+        private static bool TYPE_EXPORT = true;
+        private String msgSumExport = "Đã tìm thấy %num% bản ghi";
     }
 }
