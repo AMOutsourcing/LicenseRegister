@@ -49,7 +49,7 @@ namespace GPLX.App.Desktop
         {
             if (txtUsername.Text.Trim() == Settings.Default.Username && txtPassword.Text.Trim() == Settings.Default.Password)
             {
-                var frmManage = new Manage();
+                var frmManage = new ManageFrm();
                 frmManage.Show();
                 this.Hide();
             }

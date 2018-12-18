@@ -101,7 +101,7 @@
     </Compile>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\John.SocialClub.Data.DataModel.NGUOI_LX.datasource" />
+    <None Include="Properties\DataSources\DongBoCSDL-VPDK.Data.DataModel.NGUOI_LX.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -113,7 +113,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\John.SocialClub.Data\GPLX.Data.csproj">
+    <ProjectReference Include="..\DongBoCSDL-VPDK.Data\GPLX.Data.csproj">
       <Project>{A0055EB5-0661-4CA3-9F07-0B9345553719}</Project>
       <Name>GPLX.Data</Name>
     </ProjectReference>

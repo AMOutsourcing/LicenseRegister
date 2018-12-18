@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPLX.App.Desktop", "John.SocialClub.Desktop\GPLX.App.Desktop.csproj", "{0450FA60-C08F-4163-B953-80426F3576A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPLX.App.Desktop", "DongBoCSDL-VPDK.Desktop\GPLX.App.Desktop.csproj", "{0450FA60-C08F-4163-B953-80426F3576A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPLX.Data", "John.SocialClub.Data\GPLX.Data.csproj", "{A0055EB5-0661-4CA3-9F07-0B9345553719}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPLX.Data", "DongBoCSDL-VPDK.Data\GPLX.Data.csproj", "{A0055EB5-0661-4CA3-9F07-0B9345553719}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0DE0E1E8-FB17-4163-867D-B87C5F2CAFFF}"
 	ProjectSection(SolutionItems) = preProject

@@ -24,8 +24,12 @@ namespace GPLX.App.Desktop.Forms.Membership
     /// <summary>
     /// Manage screen - To view, search, print, export club members information
     /// </summary>
-    public partial class Manage : Form
+    public partial class ManageFrm : Form
     {
+        public static String LIST_MA_DV = "'061', '062', '063', '064', '065', '066', '067', '068', '069', '0610', '041', '042', '043', '044', '045', '046', '047', '048', '049', '0410'";
+        private static bool TYPE_EXPORT = false;
+        private String msgSumExport = "Đã chọn %select% trong số %num% hồ sơ";
+
         /// <summary>
         /// Instance of DataGridViewPrinter
         /// </summary>
@@ -49,7 +53,7 @@ namespace GPLX.App.Desktop.Forms.Membership
         /// <summary>
         /// Initializes a new instance of the Manage class
         /// </summary>
-        public Manage()
+        public ManageFrm()
         {
             this.InitializeComponent();
             this.InitializeResourceString();
@@ -102,7 +106,7 @@ namespace GPLX.App.Desktop.Forms.Membership
             List<TmpObj> listTrangThai = new List<TmpObj>();
 
             listTrangThai.Add(new TmpObj("03", "Chưa kết xuất"));
-            listTrangThai.Add(new TmpObj("04", "Đã kết xuất"));
+            //listTrangThai.Add(new TmpObj("04", "Đã kết xuất"));
 
             cbStatus.DataSource = listTrangThai;
             cbStatus.DisplayMember = "nText";
@@ -1021,12 +1025,36 @@ namespace GPLX.App.Desktop.Forms.Membership
 
                 BODY bODY = rtn.BODY;
 
+                //
+                List<NGUOILX_HOSO> ListNguoiLxHs = bODY.ListNguoiLxHs;
+
+                Dictionary<String, NGUOILX_HOSO> dict = new Dictionary<String, NGUOILX_HOSO>();
+                NGUOILX_HOSO nGUOILX = null;
+                foreach (NGUOILX_HOSO tmp in ListNguoiLxHs)
+                {
+                    if (!dict.TryGetValue(tmp.MADK, out nGUOILX))
+                    {
+                        dict.Add(tmp.MADK, tmp);
+                    }
+                }
+
                 //View Grid
                 List<NGUOI_LX> lstData = bODY.ListNguoiLx;
                 int i = 1;
+                nGUOILX = null;
                 foreach (NGUOI_LX obj in lstData)
                 {
                     obj.STT = i++;
+                    if (!dict.TryGetValue(obj.MADK, out nGUOILX))
+                    {
+                        obj.TT_XULY = "";
+                        obj.DUONGDANANH = "Không có ảnh";
+                    }
+                    else
+                    {
+                        obj.TT_XULY = nGUOILX.TT_XULY;
+                        obj.DUONGDANANH = "OK";
+                    }
                 }
                 gridData.DataSource = Ultils.ConvertToDataTable(lstData);
 
@@ -1376,10 +1404,6 @@ namespace GPLX.App.Desktop.Forms.Membership
                 tab.TabPages.Remove(tabExport);
         }
 
-        public static String LIST_MA_DV = "'061', '062', '063', '064', '065', '066', '067', '068', '069', '0610', '041', '042', '043', '044', '045', '046', '047', '048', '049', '0410'";
-        private static bool TYPE_EXPORT = true;
-        private String msgSumExport = "Đã chọn %select% trong số %num% hồ sơ";
-
         private int countCheck = 0;
         private int countRecord = 0;
         private void gridThongtin_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1395,6 +1419,12 @@ namespace GPLX.App.Desktop.Forms.Membership
                     countCheck--;
                 updateSumExport();
             }
+        }
+
+        private void ManageFrm_Activated(object sender, EventArgs e)
+        {
+            //Load ttitle
+            ManageFrm.ActiveForm.Text = "DongBoCSDL - VPDK " + Ultils.getConfig("VPDKname");
         }
     }
 }

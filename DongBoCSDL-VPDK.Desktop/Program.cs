@@ -16,7 +16,7 @@ namespace GPLX.App.Desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Manage());
+            Application.Run(new ManageFrm());
         }
     }
 }

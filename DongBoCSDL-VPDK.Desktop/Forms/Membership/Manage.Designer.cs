@@ -1,6 +1,6 @@
 ﻿namespace GPLX.App.Desktop.Forms.Membership
 {
-    partial class Manage
+    partial class ManageFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageFrm));
             this.tab = new System.Windows.Forms.TabControl();
             this.tabExport = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -438,7 +438,6 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.lbSumSearch);
-            this.panel3.Controls.Add(this.btnChangeStatus);
             this.panel3.Controls.Add(this.btnDeselect);
             this.panel3.Controls.Add(this.btnCheckAll);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -460,7 +459,7 @@
             // 
             // btnChangeStatus
             // 
-            this.btnChangeStatus.Location = new System.Drawing.Point(215, 6);
+            this.btnChangeStatus.Location = new System.Drawing.Point(694, 87);
             this.btnChangeStatus.Name = "btnChangeStatus";
             this.btnChangeStatus.Size = new System.Drawing.Size(181, 23);
             this.btnChangeStatus.TabIndex = 9;
@@ -503,6 +502,7 @@
             // grpSearch
             // 
             this.grpSearch.Controls.Add(this.cbStatus);
+            this.grpSearch.Controls.Add(this.btnChangeStatus);
             this.grpSearch.Controls.Add(this.dpEnd);
             this.grpSearch.Controls.Add(this.dpStart);
             this.grpSearch.Controls.Add(this.txtCmnd);
@@ -522,7 +522,7 @@
             // cbStatus
             // 
             this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(180, 93);
+            this.cbStatus.Location = new System.Drawing.Point(191, 87);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(121, 23);
             this.cbStatus.TabIndex = 8;
@@ -552,7 +552,7 @@
             // btnExportN
             // 
             this.btnExportN.Enabled = false;
-            this.btnExportN.Location = new System.Drawing.Point(892, 73);
+            this.btnExportN.Location = new System.Drawing.Point(903, 87);
             this.btnExportN.Name = "btnExportN";
             this.btnExportN.Size = new System.Drawing.Size(100, 23);
             this.btnExportN.TabIndex = 4;
@@ -582,7 +582,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 93);
+            this.label7.Location = new System.Drawing.Point(34, 91);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 15);
             this.label7.TabIndex = 1;
@@ -979,7 +979,7 @@
             this.openFileDialog1.Filter = "XML Files (*.xml)|*.xml";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // Manage
+            // ManageFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -988,9 +988,10 @@
             this.Controls.Add(this.tab);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Name = "Manage";
+            this.Name = "ManageFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DongBoCSDL-VPDK";
+            this.Activated += new System.EventHandler(this.ManageFrm_Activated);
             this.Load += new System.EventHandler(this.Manage_Load);
             this.tab.ResumeLayout(false);
             this.tabExport.ResumeLayout(false);

@@ -39,6 +39,9 @@ namespace GPLX.Data.DataModel
         public String HO_VA_TEN_IN { get; set; }
         public String SO_CMND_CU { get; set; }
 
+        public String TT_XULY { get; set; }
+        public String DUONGDANANH { get; set; }
+
         //public XmlSchema GetSchema()
         //{
         //    throw new NotImplementedException();
